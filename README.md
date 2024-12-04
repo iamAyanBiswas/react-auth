@@ -19,3 +19,19 @@ This project implements a robust authentication system for React applications. I
 2. **ProtectedRoute**: A component that restricts access to routes based on user authentication and roles.
 3. **useAuth**: A custom hook for easy access to authentication functions and user data.
 
+## Setup
+
+1. Clone the repository
+2. Change the directory
+3. Install dependencies
+4. Run server
+
+
+
+```bash
+git clone https://github.com/iamAyanBiswas/react-auth.git
+cd react-auth
+npm install
+npm run dev
+```
+
