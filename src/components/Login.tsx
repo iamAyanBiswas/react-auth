@@ -3,7 +3,7 @@ import { useAuth } from '../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 
 export const Login: React.FC = () => {
-  const [phone, setPhone] = useState<number>(-1);
+  const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const { login } = useAuth();
   const navigate = useNavigate();
@@ -23,9 +23,9 @@ export const Login: React.FC = () => {
       <h2>Login</h2>
       <input
         type="number"
-        value={phone===-1?'':phone}
-        onChange={(e) => setPhone(Number(e.target.value))}
-        placeholder="Username"
+        value={phone}
+        onChange={(e) => setPhone(e.target.value)}
+        placeholder="Number"
         required
       />
       <input

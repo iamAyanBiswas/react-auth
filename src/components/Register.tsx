@@ -1,21 +1,35 @@
 import React, { useState } from 'react';
-import { useAuth } from '../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 
 export const Register: React.FC = () => {
-  const [username, setUsername] = useState('');
+  const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
-  const { register } = useAuth();
   const navigate = useNavigate();
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    
+    
     try {
-      await register(username, password);
-      navigate('/dashboard');
-    } catch (error) {
-      console.error('Registration failed', error);
+      const response = await fetch('http://localhost:3000/api/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone, password }),
+      });
+  
+      const res = await response.json();
+  
+      if (!response.ok) {
+        throw new Error("Register failed")
+      }
+      localStorage.setItem('accessToken', res?.data?.accessToken);
+      localStorage.setItem('refreshToken', res?.data?.refreshToken);
+      navigate('/dashboard')
+
+    } catch (__error:unknown) {
+      console.error(__error)
     }
+
   };
 
   return (
@@ -23,8 +37,8 @@ export const Register: React.FC = () => {
       <h2>Register</h2>
       <input
         type="text"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        value={phone}
+        onChange={(e) => setPhone((e.target.value))}
         placeholder="Username"
         required
       />

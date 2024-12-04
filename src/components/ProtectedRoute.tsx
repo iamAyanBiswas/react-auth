@@ -17,7 +17,7 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ allowedRoles }) 
     };
 
     validateAccess();
-  }, [vefifyAuth]);
+  }, []);
 
   if (isLoading) {
     return <div>Loading...</div>;
