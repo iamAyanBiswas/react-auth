@@ -79,7 +79,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         throw new Error('Authentication failed');
       }
       else if (res?.data?.message === "Refresh Token sucessfull") { 
-        vefifyAuth() 
+        await vefifyAuth() 
       }
      else {
       res.data.role='user';

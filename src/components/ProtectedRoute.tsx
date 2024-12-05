@@ -14,6 +14,7 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ allowedRoles }) 
     const validateAccess = async () => {
       await vefifyAuth();
       setIsLoading(false);
+      console.log({user})
     };
 
     validateAccess();
